@@ -77,6 +77,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventFlow.AspNetCore", "Sou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventFlow.AspNetCore.Tests", "Source\EventFlow.AspNetCore.Tests\EventFlow.AspNetCore.Tests.csproj", "{C16B0B27-6E6C-439C-8419-488B2D4D798F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PostgreSQL", "PostgreSQL", "{E3318C1F-6065-45C6-8738-5DEDEA543215}"
+ProjectSection(SolutionItems) = preProject
+	EventStores\SQLiteEventPersistence.cs = EventStores\SQLiteEventPersistence.cs
+EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventFlow.PostgreSql", "Source\EventFlow.PostgreSql\EventFlow.PostgreSql.csproj", "{B92E83AE-0550-494E-BA2B-D7E5BDCF907E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -187,6 +194,10 @@ Global
 		{C16B0B27-6E6C-439C-8419-488B2D4D798F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C16B0B27-6E6C-439C-8419-488B2D4D798F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C16B0B27-6E6C-439C-8419-488B2D4D798F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B92E83AE-0550-494E-BA2B-D7E5BDCF907E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B92E83AE-0550-494E-BA2B-D7E5BDCF907E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B92E83AE-0550-494E-BA2B-D7E5BDCF907E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B92E83AE-0550-494E-BA2B-D7E5BDCF907E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -217,6 +228,8 @@ Global
 		{EFDD4B74-E69A-4F4F-80F4-DC8F32CD76A5} = {980EEDAA-1FEF-4D7C-8811-5EF1D9729773}
 		{9D57E096-AA8E-40E5-A1CC-32C07B425850} = {3A34F6A2-64B0-4730-A0EB-D324BC755538}
 		{C16B0B27-6E6C-439C-8419-488B2D4D798F} = {3A34F6A2-64B0-4730-A0EB-D324BC755538}
+		{E3318C1F-6065-45C6-8738-5DEDEA543215} = {92F3C263-8C0C-4D12-B41A-452E48D2E5E8}
+		{B92E83AE-0550-494E-BA2B-D7E5BDCF907E} = {E3318C1F-6065-45C6-8738-5DEDEA543215}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {17607E2C-4E8E-45A2-85BD-0A5808E1C0F3}
