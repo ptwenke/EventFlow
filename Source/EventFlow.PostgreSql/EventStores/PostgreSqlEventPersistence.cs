@@ -23,7 +23,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Data.PostgreSql;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -33,6 +32,7 @@ using EventFlow.EventStores;
 using EventFlow.Exceptions;
 using EventFlow.Logs;
 using EventFlow.PostgreSql.Connections;
+using Npgsql;
 
 namespace EventFlow.PostgreSql.EventStores
 {
@@ -142,9 +142,9 @@ namespace EventFlow.PostgreSql.EventStores
                     eventDataModels)
                     .ConfigureAwait(false);
             }
-            catch (PostgreSqlException e)
+            catch (PostgresException e)
             {
-                if (e.ResultCode == PostgreSqlErrorCode.Constraint)
+                if (e.ErrorCode == 23505)
                 {
                     throw new OptimisticConcurrencyException(e.ToString(), e);
                 }
