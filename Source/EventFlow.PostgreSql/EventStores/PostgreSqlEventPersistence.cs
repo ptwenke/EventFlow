@@ -72,12 +72,12 @@ namespace EventFlow.PostgreSql.EventStores
 
             const string sql = @"
                 SELECT
-                    GlobalSequenceNumber, BatchId, AggregateId, AggregateName, Data, Metadata, AggregateSequenceNumber
-                FROM EventFlow
+                    ""GlobalSequenceNumber"", ""BatchId"", ""AggregateId"", ""AggregateName"", ""Data"", ""Metadata"", ""AggregateSequenceNumber""
+                FROM ""EventFlow""
                 WHERE
-                    GlobalSequenceNumber >= @FromId AND GlobalSequenceNumber <= @ToId
+                ""GlobalSequenceNumber"" >= @FromId AND GlobalSequenceNumber <= @ToId
                 ORDER BY
-                    GlobalSequenceNumber ASC";
+                    ""GlobalSequenceNumber"" ASC";
             var eventDataModels = await _connection.QueryAsync<EventDataModel>(
                 Label.Named("postgresql-fetch-events"),
                 cancellationToken,
@@ -125,11 +125,11 @@ namespace EventFlow.PostgreSql.EventStores
 
             const string sql = @"
                 INSERT INTO
-                    EventFlow
-                        (BatchId, AggregateId, AggregateName, Data, Metadata, AggregateSequenceNumber)
+                    ""EventFlow""
+                        (""BatchId"", ""AggregateId"", ""AggregateName"", ""Data"", ""Metadata"", ""AggregateSequenceNumber"")
                     VALUES
                         (@BatchId, @AggregateId, @AggregateName, @Data, @Metadata, @AggregateSequenceNumber)
-                    RETURNING GlobalSequenceNumber;";
+                    RETURNING ""GlobalSequenceNumber"";";
 
             IReadOnlyCollection<long> ids;
 
@@ -172,13 +172,13 @@ namespace EventFlow.PostgreSql.EventStores
         {
             const string sql = @"
                 SELECT
-                    GlobalSequenceNumber, BatchId, AggregateId, AggregateName, Data, Metadata, AggregateSequenceNumber
-                FROM EventFlow
+                    ""GlobalSequenceNumber"", ""BatchId"", ""AggregateId"", ""AggregateName"", ""Data"", ""Metadata"", ""AggregateSequenceNumber""
+                FROM ""EventFlow""
                 WHERE
-                    AggregateId = @AggregateId AND
-                    AggregateSequenceNumber >= @FromEventSequenceNumber
+                    ""AggregateId"" = @AggregateId AND
+                    ""AggregateSequenceNumber"" >= @FromEventSequenceNumber
                 ORDER BY
-                    AggregateSequenceNumber ASC";
+                    ""AggregateSequenceNumber"" ASC";
             var eventDataModels = await _connection.QueryAsync<EventDataModel>(
                 Label.Named("postgresql-fetch-events"),
                 cancellationToken,
@@ -196,7 +196,7 @@ namespace EventFlow.PostgreSql.EventStores
             IIdentity id,
             CancellationToken cancellationToken)
         {
-            const string sql = @"DELETE FROM EventFlow WHERE AggregateId = @AggregateId";
+            const string sql = @"DELETE FROM ""EventFlow"" WHERE ""AggregateId"" = @AggregateId";
             var affectedRows = await _connection.ExecuteAsync(
                 Label.Named("postgresql-delete-aggregate"),
                 cancellationToken,
